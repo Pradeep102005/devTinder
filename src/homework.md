@@ -1,0 +1,13 @@
+Create a repository
+initialise the repository
+find the diff node_modules,package.json,package lock.son
+install express create server
+listen to port 7777
+write request handlers
+install nodemon and update scrips inside package.son
+
+-intialise  git
+  gitignore
+  create a remote repo on github
+  push all code to remote origin
+  

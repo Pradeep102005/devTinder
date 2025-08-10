@@ -1,15 +1,19 @@
 const express=require('express');
 const app=express();
+app.use('/user',(req,res)=>{
+    res.send("hahahahaha");
+});
 
-app.get('/about',(req,res)=>{
-    res.send("This server is created by pradeep")
-})
-app.get('/hobby',(req,res)=>{
-    res.send("My hobbies are travellig,playing");
-})
-app.get('/',(req,res)=>{
-    res.send("Welcome to my server");
-})
-app.get(7777,()=>{
+app.get('/user',(req,res)=>{
+    res.send({firstName:"Pradeep",lastName:"Palakodeti"});
+});
+app.post('/user',(req,res)=>{
+//saving data to the DB
+   res.send("Data successfully saved to the database");
+});
+app.delete('/user',(req,res)=>{
+    res.send("User deleted");
+});
+app.listen(7777,()=>{
 console.log("Server started running 7777");
 })

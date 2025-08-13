@@ -1,20 +1,21 @@
-const express=require('express');
-const app=express();
-app.use("/user",(req,res,next)=>{
-    //route handler 1
-    console.log("Handline the route user!!");
-    //   res.send("Route handler1");
-      next();
-},
-(req,res)=>{
-    //route handler 2
-    console.log("Handling the route user 2!!")
-    res.send("2nd response!!");
-}
-);
+const express = require('express');
+const app = express();
+const { adminAuth, UserAuth } = require("./middlewares/auth");
 
+app.use("/admin", adminAuth);
 
+app.get("/user/data", UserAuth, (req, res) => {
+    res.send("Sending user data");
+});
 
-app.listen(7777,()=>{
-console.log("Server started running 7777");
-})
+app.get("/user/login", (req, res) => {
+    res.send("Login page opened user please login");
+});
+
+app.get("/admin/getAllData", (req, res) => {
+    res.send("all data sent");
+});
+
+app.listen(7777, () => {
+    console.log("Server started running 7777");
+});

@@ -1,18 +1,37 @@
-const express=require('express');
-//instance of expressjs application
-const app=express();
-app.use("/",(req,res)=>{
-    res.send("Namaste from the dashboard..!");
-})
-app.use("/write",(req,res)=>{
-    res.send("Writing mode activates");
-})
-app.use((req,res)=>{
-    res.send("Hello from the server");
-})
-
-
-app.listen(3000,()=>{
-    console.log("Sever is sucessfully listening on port 3000....");
+const express = require('express');
+const connectDb=require("./config/database");
+const app = express();
+const User=require("./models/user");
+app.post("/signup",async (req,res)=>{
+    //creating a new instance of the user model
+    const user=new User({
+        firstName:"sachin",
+        lastName:"tendulkar",
+        emailId:"st@gmail.com",
+        password:"st@123",
+        _id:"347192763458762468945686"
+    });
+    try{
+    await user.save();
+    res.send("User added sucessfully!");
+    } catch(err){
+        res.status(400).send("Error saving the user:"+err.message);
+    }
 });
+
+connectDb()
+.then(()=>{
+console.log("Database connection estbalised");
+app.listen(7777, () => {
+    console.log("Server started running 7777");
+});
+})
+.catch(err=>{
+console.log("Database cannot be connected");
+});
+
+
+
+
+
 

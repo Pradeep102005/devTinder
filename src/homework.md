@@ -15,5 +15,8 @@ install nodemon and update scrips inside package.son
 
   create multiple route handlers-PLay with the code
   next()
-  
+  create a user schema &user model
+  create POST/signup API to add data to database
+-Push some document using API calls from postman
+
   

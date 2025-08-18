@@ -13,3 +13,4 @@ app.get('/user',(req,res,next)=>{
 app.listen(7777, () => {
     console.log('Server running on http://localhost:7777');
 });
+

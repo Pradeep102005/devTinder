@@ -18,5 +18,6 @@ install nodemon and update scrips inside package.son
   create a user schema &user model
   create POST/signup API to add data to database
 -Push some document using API calls from postman
-
-  
+-diff btw JS and JSON
+  -add the express.json middleware to your app
+  -make you singup API dynamic to receive data from the end user 

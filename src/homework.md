@@ -21,3 +21,5 @@ install nodemon and update scrips inside package.son
 -diff btw JS and JSON
   -add the express.json middleware to your app
   -make you singup API dynamic to receive data from the end user 
+
+  //add validation to the password

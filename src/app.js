@@ -68,20 +68,32 @@ app.delete("/user",async(req,res)=>{
     }
 })
 //update data of the year
-app.patch("/user",async (req,res)=>{
-    const userId=req.body.userId;
-    const data=req.body;
-    console.log(data);
-    try{
-        await User.findByIdAndUpdate({_id:userId},data);
-        res.send("User updated sucessfully")
+app.patch("/user", async (req, res) => {
+    const userId = req.body.userId;
+    const data = req.body;
+    
 
+    try {
+        const ALLOWED_UPDATES = ["userId","photoUrl", "about", "gender", "age", "skills"];
+    
+    const isUpdateAllowed = Object.keys(data).every((k) =>
+        ALLOWED_UPDATES.includes(k)
+    );
+
+    if (!isUpdateAllowed) {
+      throw new Error ("Update not allowed");
     }
-      catch(err){
-        res.status(400).send("Error saving the user:"+err.message);
+    if(data.skills&&data.skills>20){
+        throw new Error("You can add a maximum of 20 skills.")
     }
- 
-})
+        await User.findByIdAndUpdate(userId, data, {
+            runValidators: true,
+        });
+        res.send("User updated successfully");
+    } catch (err) {
+        res.status(400).send("Error saving the user: " + err.message);
+    }
+});
 
 
 

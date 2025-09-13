@@ -23,3 +23,7 @@ install nodemon and update scrips inside package.son
   -make you singup API dynamic to receive data from the end user 
 
   //add validation to the password
+
+  //validate data in signupAPi(helper function)
+  -install bcrypt package
+  - create passwordHash using bcrypt .hash & save the user with encrypted password
